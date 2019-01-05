@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Fixed Asset Catalog</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Fixed Asset Catalog</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/showassets">Show All Assets</a></li>
+              <li><a href="/asset_type">Asset Types</a></li>
+              <li><a href="/asset/create">Create Asset</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {% if 'username' not in LoginSession %}
+              <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              {% endif %}
+              {% if LoginSession['username'] %}
+              <li><a href="#">Logged in as: {{LoginSession['username']}}</a></li>
+              <li><a href="/gdisconnect"><span class="glyphicon glyphicon-log-out"></span> Login Out</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+        <div id='body' class='container'>
+            <div class='flashed message'>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div align='center' class="{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+            </div>
+            {% block content %}
+            {% endblock %}
+        </div>
+        <br>
+        <footer class="container-fluid bg-4 text-center">
+          <p>Fixed Asset Catalog Made By Louis Huang</p>
+          <p>fbigto@163.com</p>
+        </footer>
+    </body>
+</html>

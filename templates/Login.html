@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Fixed Asset Catalog</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="http://apis.google.com/js/platform.js?onload=start"> </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Fixed Asset Catalog</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/showassets">Show All Assets</a></li>
+              <li><a href="/asset_type">Asset Types</a></li>
+              <li><a href="/asset/create">Create Asset</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {% if 'username' not in LoginSession %}
+              <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              {% endif %}
+              {% if LoginSession['username'] %}
+              <li><a href="#">Logged in as: {{LoginSession['username']}}</a></li>
+              <li><a href="/gdisconnect"><span class="glyphicon glyphicon-log-out"></span> Login Out</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      <div id='panel' class='panel panel-default col-md-4 col-md-offset-4'>
+        {% if 'username' not in LoginSession %}
+        <h3>For further operation and security reason, please sign in with your google account.</h3>
+        <div id="signin" align='center'>
+            <span class="g-signin"
+                data-scope="openid profile email"
+                data-clientid="915950444958-kqo6hu96rvp2je8982pr9f6klfkv0hkn.apps.googleusercontent.com"
+                data-redirecturi="postmessage"
+                data-accesstype="offline"
+                data-cookiepolicy="single_host_origin"
+                data-callback="signInCallback"
+                data-approvalprompt="force">
+            </span>
+        </div>
+        {% endif %}
+        {% if LoginSession['username'] %}
+        <h3>Already Logged in as {{ LoginSession['username'] }}.</h3>
+        {% endif %}
+        </div>
+        <div align='center' id="result"></div>
+
+        <script>
+            function signInCallback(authResult) {
+              if (authResult['code']) {
+
+                // Hide the sign-in button now that the user is authorized
+                $('#signin').attr('style', 'display: none');
+                $('#panel').attr('style', 'display: none');
+
+                // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+                $.ajax({
+                  type: 'POST',
+                  url: '/gconnect?state={{STATE}}',
+                  processData: false,
+                  data: authResult['code'],
+                  contentType: 'application/octet-stream; charset=utf-8',
+                  success: function(result) {
+                    // Handle or verify the server response if necessary.
+                    if (result) {
+                      $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+                     setTimeout(function() {
+                      window.location.href = "/";
+                     }, 4000);
+
+
+                  } else if (authResult['error']) {
+
+                console.log('There was an error: ' + authResult['error']);
+              } else {
+                    $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+                     }
+
+                  }
+
+              }); } }
+        </script>
+    </body>
+</html>

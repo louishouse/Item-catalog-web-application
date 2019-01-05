@@ -1,0 +1,13 @@
+{% extends "homepage.html" %}
+{% block content %}
+<div class="container" align='center'>
+    <h3>Are you sure to delete asset "{{asset.asset_number}}":</h3>
+    <form method='post'>
+        <button type="input" name='confirm' value='1' class="btn btn-info">YES</button>
+        <button type='input' name='confirm' value='' class="btn btn-info">NO</button>
+    </form>
+
+</div>
+
+
+{% endblock %}

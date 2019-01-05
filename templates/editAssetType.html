@@ -1,0 +1,15 @@
+{% extends "homepage.html" %}
+{% block content %}
+<br>
+	<div class="col-md-6 padding-top">
+		<h2>Edit Asset Type "{{assettype}}":</h2>
+		<form method = "post">
+			<label>Edit Asset Type:</label>
+			<input type ="text" class="form-control" maxlength="100" name="asset_type" value="{{at.assettype}}">
+			<div class='error'>{{error}}</div>
+			<button type="submit" class="btn btn-info">
+			Submit</button>
+		</form>
+	</div>
+
+{% endblock %}

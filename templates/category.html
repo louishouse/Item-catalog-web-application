@@ -1,0 +1,35 @@
+{% extends "homepage.html" %}
+{% block content %}
+<div class='container col-md-4'>
+    <h2>All Asset Types:</h2>
+    <br>
+    {% for at in alltypes %}
+    <a class='category' href='{{url_for('showCategory', asset_type=at.assettype)}}'>{{at.assettype}}</a>
+    <br>
+    {% endfor %}
+</div>
+<div class='container col-md-8'>
+    <h2>Most Recently Purchased:</h2>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Asset Number</th>
+                <th>Asset Type</th>
+                <th>Name</th>
+                <th>Purchase Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in assets %}
+            <tr>
+                <td>{{a.asset_number}}</td>
+                <td>{{a.asset_type}}</td>
+                <td>{{a.asset_name}}</td>
+                <td>{{a.purchase_date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

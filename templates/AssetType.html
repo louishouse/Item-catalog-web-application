@@ -1,0 +1,42 @@
+{% extends "homepage.html" %}
+{% block content %}
+<br>
+	<div class="col-md-4 padding-top">
+		<h2>Create Asset Type:</h2>
+		<form method = "post">
+			<div class="form-group">
+			<label for="name">New Asset Type:</label>
+			<input type ="text" class="form-control" maxlength="100" name="asset_type">
+			<div class='error'>{{error}}</div>
+			<button type="submit" class="btn btn-info" id="submit">
+			Create</button>
+			</div>
+		</form>
+	</div>
+	<div class='col-md-6 col-md-offset-1 padding-top'>
+		<h2>Currently Exist Types:</h2>
+		<table class="table table-striped">
+	        <thead>
+	            <tr>
+	                <th>Asset Type</th>
+	                <th>Created By</th>
+	                <th>Operation</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            {% for at in alltypes %}
+	            <tr>
+	                <td>{{at.assettype}}</td>
+	                <td>{{at.username}}</td>
+	                <td>
+			          <a class='btn btn-info btn-xs' href='{{url_for('editAssetType', asset_type=at.assettype)}}'>Edit</a>
+			          |
+			          <a class='btn btn-info btn-xs' href='{{url_for('deleteAssetType', asset_type=at.assettype)}}'>Delete</a>
+			        </td>
+	            </tr>
+	            {% endfor %}
+	        </tbody>
+    	</table>
+    </div>
+
+{% endblock %}

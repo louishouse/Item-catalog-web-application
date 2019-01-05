@@ -1,0 +1,21 @@
+footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.category {
+    font-size: 24px;
+}
+
+.error, .errors {
+    color: red;
+}
+
+.navbar-nav  li a:hover {
+    color: #0080ff !important;
+}
+
+.bg-4 {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}

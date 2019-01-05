@@ -1,0 +1,48 @@
+{% extends "homepage.html" %}
+{% block content %}
+<div class="container">
+  <h2>Assets in Record</h2>
+  <div>
+    <a class='btn btn-info btn-lg' href='/showassets'>Categorize by Asset Type</a>
+    <a class='btn btn-info btn-lg' href='/showassets/byuser'>Categorize by User</a>
+  </div>
+  <br>
+  {% for user in users %}
+  <h3>{{user.name}}</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Asset Number</th>
+        <th>Asset Type</th>
+        <th>Name</th>
+        <th>Purchase Date</th>
+        <th>Cost</th>
+        <th>Description</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in assets %}
+      {% if a.managed_userid == user.id %}
+      <tr>
+        <td>{{a.asset_number}}</td>
+        <td>{{a.asset_type}}</td>
+        <td>{{a.asset_name}}</td>
+        <td>{{a.purchase_date}}</td>
+        <td>{{a.cost}}</td>
+        <td>{{a.description}}</td>
+        <td>
+          <a class='btn btn-info btn-xs' href='{{url_for('editAsset', id=a.id)}}'>Edit</a>
+          |
+          <a class='btn btn-info btn-xs' href='{{url_for('deleteAsset', id=a.id)}}'>Delete</a>
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  {% endfor %}
+</div>
+
+{% endblock %}
