@@ -1,8 +1,8 @@
-###Purpose:
+#Purpose:
 This project is a web portal which presents categories of items in record, along with CRUD functionalities to manipulate the data, using Oauth API from google with local permission.
 
 
-###Files of this project:
+#Files of this project:
 catalog.py		The main application code
 db.py			Contains the ORM model classes, be included in the catalog.py
 client_secrets.json	The app use this to access the Oauth API of google
