@@ -22,6 +22,6 @@ WTForms		https://wtforms.readthedocs.io/en/latest/
 
 ### How to use:
 
-1.Install all the required software and libraries mendtioned above.  
-2.Under the project folder, execute the command 'python catalog.py'.  
-3.Use browser to access the app with the url http://localhost:5000.  
+1. Install all the required software and libraries mendtioned above.  
+2. Under the project folder, execute the command 'python catalog.py'.  
+3. Use browser to access the app with the url http://localhost:5000.  
