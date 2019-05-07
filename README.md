@@ -14,10 +14,10 @@ This project is a web portal which presents categories of items in record, along
 
 
 ### Before running this project, several installations are required, please refer to below list and related website for installation guide:
-python 2.7	https://www.python.org/  
-Flask		http://flask.pocoo.org/  
-sqlalchemy 1.1	http://docs.sqlalchemy.org/en/rel_1_1/  
-WTForms		https://wtforms.readthedocs.io/en/latest/  
+- python 2.7	https://www.python.org/  
+- Flask		http://flask.pocoo.org/  
+- sqlalchemy 1.1	http://docs.sqlalchemy.org/en/rel_1_1/  
+- WTForms		https://wtforms.readthedocs.io/en/latest/  
 
 
 ### How to use:
