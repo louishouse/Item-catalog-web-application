@@ -3,12 +3,14 @@ This project is a web portal which presents categories of items in record, along
 
 
 ### Files of this project:
-catalog.py		The main application code.  
-db.py			Contains the ORM model classes, be included in the catalog.py.  
-client_secrets.json	The app use this to access the Oauth API of google.  
-fixedasset.db		Sqlite database file storing the current records.  
-Templates folder	contains all the html templates file.  
-static folder		contains the css file for html element styling.  
+| File name | Description |
+| :---:     | :---        |
+| catalog.py |		The main application code. | 
+| db.py	    |		Contains the ORM model classes, be included in the catalog.py. | 
+| client_secrets.json |	The app use this to access the Oauth API of google. | 
+| fixedasset.db	|	Sqlite database file storing the current records. | 
+| Templates folder | contains all the html templates file. | 
+| static folder	|	contains the css file for html element styling. | 
 
 
 ### Before running this project, several installations are required, please refer to below list and related website for installation guide:
